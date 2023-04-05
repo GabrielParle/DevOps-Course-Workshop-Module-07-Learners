@@ -41,7 +41,7 @@ pipeline {
         }
         stage('build .NET') {
             agent {
-            docker { image 'latest }
+            docker { image 'latest' }
             }
                      steps {
                            echo 'building .net'
