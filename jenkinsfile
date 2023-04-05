@@ -5,10 +5,14 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+            stage('Build npm') {
+            agent {
+        docker { image 'node:16.13.1-alpine' }
+    }
+
             steps {
-                echo 'Building..'
-                sh 'dotnet build'
+                echo 'Building..npm'
+
                 sh 'cd DotnetTemplate.Web'
                 sh 'npm install'
                 sh 'npm run build'
@@ -19,16 +23,25 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'dotnet test'
+
                 sh 'cd DotnetTemplate.Web'
                 sh 'npm t'
                 sh 'npm run lint'
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+        stage('build .NET') {
+                     steps {
+                           echo 'building .net'
+                           sh 'dotnet build'
+                           }
+                           }
+         stage('.net test') {
+                     steps {
+                           echo 'tets .net'
+                           sh 'dotnet test'
+                           }
+                           }
+
+
     }
 }
