@@ -8,7 +8,7 @@ pipeline {
             stage('Build npm') {
             agent {
         docker { image 'node:16.13.1-alpine' }
-    
+            }
             
             steps {
                 echo 'Building..npm'
@@ -23,7 +23,9 @@ pipeline {
             }
         }
         stage('Test') {
+            agent {
             docker { image 'node:16.13.1-alpine' }
+            }
     
             
             steps {
