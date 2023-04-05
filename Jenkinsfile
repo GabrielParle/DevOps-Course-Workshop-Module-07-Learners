@@ -12,11 +12,12 @@ pipeline {
             
             steps {
                 echo 'Building..npm'
-                dir('DotnetTemplate.Web')
+                dir('DotnetTemplate.Web'){
 
                 
                 sh 'npm install'
                 sh 'npm run build'
+                }
                 echo 'Built successfully'
 
             }
@@ -25,11 +26,12 @@ pipeline {
             
             steps {
                 echo 'Testing..'
-                dir('DotnetTemplate.Web')
+                dir('DotnetTemplate.Web'){
 
                 
                 sh 'npm t'
                 sh 'npm run lint'
+                }
             }
         }
         stage('build .NET') {
