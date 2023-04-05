@@ -41,7 +41,7 @@ pipeline {
         }
         stage('build .NET') {
             agent {
-            docker { image 'bullseye-jdk11' }
+            docker { image 'latest-jdk11' }
             }
                      steps {
                            echo 'building .net'
@@ -50,7 +50,7 @@ pipeline {
                            }
          stage('.net test') {
              agent {
-            docker { image 'bullseye-jdk11' }
+            docker { image 'latest-jdk11' }
             }
                      steps {
                            echo 'tets .net'
