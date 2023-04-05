@@ -1,0 +1,34 @@
+
+Jenkinsfile (Declarative Pipeline)
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+                sh 'dotnet build'
+                sh 'cd DotnetTemplate.Web'
+                sh 'npm install'
+                sh 'npm run build'
+                echo 'Built successfully'
+
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+                sh 'dotnet test'
+                sh 'cd DotnetTemplate.Web'
+                sh 'npm t'
+                sh 'npm run lint'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
