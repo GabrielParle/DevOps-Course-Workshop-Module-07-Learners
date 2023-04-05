@@ -40,12 +40,18 @@ pipeline {
             }
         }
         stage('build .NET') {
+            agent {
+            docker { image 'latest }
+            }
                      steps {
                            echo 'building .net'
                            sh 'dotnet build'
                            }
                            }
          stage('.net test') {
+             agent {
+            docker { image 'latest' }
+            }
                      steps {
                            echo 'tets .net'
                            sh 'dotnet test'
