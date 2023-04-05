@@ -13,7 +13,7 @@ jobs:
       run: dotnet build
     - name: build npm
       working-directory: DotnetTemplate.Web
-      run: npm i && build
+      run: npm i && run build
     - name: Run tests
       run: npm t && run lint
     - name: run .net test
