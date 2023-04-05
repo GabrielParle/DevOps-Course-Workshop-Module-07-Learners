@@ -17,7 +17,9 @@ jobs:
        npm i
        npm run build
     - name: Run tests
-      run: npm t && run lint
+      run: | 
+       npm t 
+       npm run lint
     - name: run .net test
       working-directory: .
       run: dotnet test
