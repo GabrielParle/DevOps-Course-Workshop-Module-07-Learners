@@ -17,5 +17,5 @@ jobs:
     - name: Run tests
       run: npm t && run lint
     - name: run .net test
-    - working-directory: .
+      working-directory: .
       run: dotnet test
