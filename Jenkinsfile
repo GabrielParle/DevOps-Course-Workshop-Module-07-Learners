@@ -9,11 +9,11 @@ pipeline {
             agent {
         docker { image 'node:16.13.1-alpine' }
     }
-
+            dir('DotnetTemplate.Web')
             steps {
                 echo 'Building..npm'
 
-                sh 'cd DotnetTemplate.Web'
+                
                 sh 'npm install'
                 sh 'npm run build'
                 echo 'Built successfully'
@@ -21,10 +21,11 @@ pipeline {
             }
         }
         stage('Test') {
+            dir('DotnetTemplate.Web')
             steps {
                 echo 'Testing..'
 
-                sh 'cd DotnetTemplate.Web'
+                
                 sh 'npm t'
                 sh 'npm run lint'
             }
